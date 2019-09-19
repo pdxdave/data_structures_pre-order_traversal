@@ -23,10 +23,16 @@ class Node(object):
         
 class BinaryTree(object):
     def __init__(self, root):
+        selt.root = Node(root)
         
     def print_tree(self, traversal_type): # helper function
         if traversal_type == "preorder":
-            return self.preorder_print(root.tree, "") # start root & emptry string stores results
+            return self.preorder_print(tree.root, "") # start root & emptry string stores results
+        elif traversal_type == "inorder":
+            return self.inorder print(tree.root, "")
+        else:
+            print("Traversal type " + str(traversal_type) + " is not supported.")
+            return False
         
     def preorder_print(self, start, traversal):  # start will be updated on every recursive call. traversal is str for print
         """Root->Left->Right"""
@@ -34,6 +40,15 @@ class BinaryTree(object):
             traversal += (str(start.value) + "-") # print value and append to traversal string
             traversal = self.preorder_print(start.left, traversal) # call func, go down left side
             traversal = self.preorder_print(start.right, traversal) # same as above, but to the right
+        return traversal
+        
+        
+    def inorder_print(self, start, traversal):
+    """Left->Root->Right"""
+        if start:
+            traversal = self.inorder_print(start.left, traversal)
+            traversal += (str(start.value) + "-")
+            traversal = self.inorder_print(start.right, traversal)
         return traversal
         
         
